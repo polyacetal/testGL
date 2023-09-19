@@ -24,13 +24,13 @@ function init() {
 		10000
 	);
 
-	camera.position.set(0, 0, 1000);
+	camera.position.set(0, 0, 2000);
 
 	// create cube
 	const geometry = new THREE.BoxGeometry(500, 500, 500);
 
 	const material = new THREE.MeshStandardMaterial({
-		color: 0x0000ff
+		color: 0xff8c00
 	});
 
 	const box = new THREE.Mesh(geometry, material);
@@ -46,13 +46,21 @@ function init() {
 
 	renderer.render(scene, camera);
 
+	const light2 = new THREE.DirectionalLight(0xffffff);
+	light2.intensity = 2;
+	light2.position.set(-1,-1,-1);
+
+	scene.add(light2);
+
+	renderer.render(scene, camera);
+
 	tick();
 
 	function tick() {
 		requestAnimationFrame(tick);
 
-		box.rotation.x += 0.01;
-		box.rotation.y += 0.01;
+		box.rotation.x += 0.02;
+		box.rotation.y += 0.02;
 
 		renderer.render(scene, camera);
 	}
